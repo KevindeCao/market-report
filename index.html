@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Báo cáo Thị trường Non-woven 2025 — Góc nhìn CaCO3 Filler</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f5f4f0;
+    color: #1a1a1a;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  /* Header */
+  .header {
+    background: #0f6e56;
+    border-radius: 14px;
+    padding: 2rem 2rem 1.5rem;
+    margin-bottom: 2rem;
+    color: #fff;
+  }
+  .header .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border-radius: 20px;
+    font-size: 11px;
+    padding: 3px 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header h1 { font-size: 24px; font-weight: 600; margin-bottom: 6px; }
+  .header p { font-size: 13px; opacity: 0.8; }
+
+  /* Metric cards */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .metric {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px 18px;
+    border: 0.5px solid rgba(0,0,0,0.08);
+  }
+  .metric .val { font-size: 24px; font-weight: 600; color: #0f6e56; }
+  .metric .lbl { font-size: 12px; color: #888; margin-top: 4px; }
+
+  /* Section */
+  .section { margin-bottom: 2rem; }
+  .section-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+    border-left: 3px solid #1D9E75;
+    padding-left: 10px;
+    margin-bottom: 14px;
+  }
+
+  /* Cards */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    border: 0.5px solid rgba(0,0,0,0.08);
+    padding: 1.2rem 1.4rem;
+  }
+  .card h3 { font-size: 13px; font-weight: 600; color: #555; margin-bottom: 12px; }
+
+  /* 2-col grid */
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* Chart wrappers */
+  .chart-wrap { position: relative; width: 100%; }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #666;
+  }
+  .legend span { display: flex; align-items: center; gap: 5px; }
+  .legend-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+  /* Focus list */
+  .focus-list { list-style: none; }
+  .focus-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 0.5px solid #eee;
+  }
+  .focus-list li:last-child { border-bottom: none; }
+  .focus-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .focus-list .bold { font-weight: 600; font-size: 14px; }
+  .focus-list .desc { font-size: 12px; color: #666; margin-top: 3px; }
+
+  /* Tags */
+  .tag-pill {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .tag-green { background: #EAF3DE; color: #3B6D11; }
+  .tag-amber { background: #FAEEDA; color: #854F0B; }
+  .tag-coral { background: #FAECE7; color: #993C1D; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #888; padding: 8px 10px; border-bottom: 1.5px solid #eee; }
+  td { padding: 10px 10px; border-bottom: 0.5px solid #f0f0f0; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fafaf8; }
+
+  /* Insight boxes */
+  .insight {
+    background: #f0faf6;
+    border-left: 3px solid #1D9E75;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #1a1a1a;
+    margin-top: 12px;
+  }
+  .insight strong { color: #0f6e56; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid #eee;
+  }
+
+  @media (max-width: 560px) {
+    .row2 { grid-template-columns: 1fr; }
+    .header h1 { font-size: 20px; }
+    .metric .val { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="tag">Market Research Report · 2025</div>
+    <h1>Thị trường Non-woven Toàn cầu</h1>
+    <p>Góc nhìn chiến lược cho nhà sản xuất CaCO3 Filler Masterbatch &nbsp;·&nbsp; Cập nhật tháng 5/2026</p>
+  </div>
+
+  <!-- Metrics -->
+  <div class="metric-grid">
+    <div class="metric">
+      <div class="val">~$55B</div>
+      <div class="lbl">Quy mô thị trường 2025</div>
+    </div>
+    <div class="metric">
+      <div class="val">~6%</div>
+      <div class="lbl">CAGR 2025–2031</div>
+    </div>
+    <div class="metric">
+      <div class="val">~$87B</div>
+      <div class="lbl">Dự báo đến 2031–2033</div>
+    </div>
+    <div class="metric">
+      <div class="val">PP 60%+</div>
+      <div class="lbl">Nguyên liệu chủ đạo</div>
+    </div>
+    <div class="metric">
+      <div class="val">Asia 45%</div>
+      <div class="lbl">Tỷ trọng Châu Á–TBD</div>
+    </div>
+  </div>
+
+  <!-- Section: Region chart -->
+  <div class="section card">
+    <p class="section-title">Tỷ trọng thị trường theo khu vực địa lý (2025)</p>
+    <div class="legend">
+      <span><span class="legend-sq" style="background:#1D9E75"></span>Châu Á–TBD (45%)</span>
+      <span><span class="legend-sq" style="background:#378ADD"></span>Bắc Mỹ (24%)</span>
+      <span><span class="legend-sq" style="background:#7F77DD"></span>Châu Âu (20%)</span>
+      <span><span class="legend-sq" style="background:#EF9F27"></span>Phần còn lại (11%)</span>
+    </div>
+    <div class="chart-wrap" style="height:240px;">
+      <canvas id="regionChart" role="img" aria-label="Tỷ trọng thị trường non-woven theo khu vực: Châu Á TBD 45%, Bắc Mỹ 24%, Châu Âu 20%, Còn lại 11%">
+        Châu Á-TBD 45%, Bắc Mỹ 24%, Châu Âu 20%, Còn lại 11%
+      </canvas>
+    </div>
+    <div class="insight">
+      <strong>Key takeaway:</strong> Châu Á–TBD chiếm gần một nửa sản lượng Non-woven toàn cầu. ASEAN (Việt Nam, Thái Lan, Indonesia) đang nổi lên mạnh mẽ nhờ chi phí sản xuất cạnh tranh và nhu cầu hygiene tăng nhanh theo thu nhập.
+    </div>
+  </div>
+
+  <!-- Section: App chart -->
+  <div class="section card">
+    <p class="section-title">Tỷ trọng theo ứng dụng — Application Mix (% doanh thu 2025)</p>
+    <div class="legend">
+      <span><span class="legend-sq" style="background:#D85A30"></span>Hygiene</span>
+      <span><span class="legend-sq" style="background:#1D9E75"></span>Durables/Construction</span>
+      <span><span class="legend-sq" style="background:#378ADD"></span>Medical</span>
+      <span><span class="legend-sq" style="background:#7F77DD"></span>Automotive</span>
+      <span><span class="legend-sq" style="background:#EF9F27"></span>Filtration</span>
+      <span><span class="legend-sq" style="background:#888780"></span>Khác</span>
+    </div>
+    <div class="chart-wrap" style="height:260px;">
+      <canvas id="appChart" role="img" aria-label="Tỷ trọng ứng dụng: Hygiene 38%, Durables 18%, Medical 14%, Automotive 12%, Filtration 9%, Khác 9%">
+        Hygiene 38%, Durables 18%, Medical 14%, Automotive 12%, Filtration 9%, Khác 9%
+      </canvas>
+    </div>
+  </div>
+
+  <!-- CAGR side by side -->
+  <div class="row2 section">
+    <div class="card">
+      <h3>CAGR tăng trưởng theo khu vực (%/năm)</h3>
+      <div class="chart-wrap" style="height:220px;">
+        <canvas id="cagrChart" role="img" aria-label="CAGR theo khu vực">ASEAN 8%, Châu Á 7.5%, Latin Mỹ 5%, Bắc Mỹ 5.5%, Châu Âu 4.5%</canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h3>CAGR tăng trưởng theo ứng dụng (%/năm)</h3>
+      <div class="chart-wrap" style="height:220px;">
+        <canvas id="appCagrChart" role="img" aria-label="CAGR theo ứng dụng">Geotextile 8.5%, Filtration 7.5%, Medical 6.5%, Automotive 6%, Hygiene 5.5%</canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Priority table -->
+  <div class="section card">
+    <p class="section-title">Bảng phân tích ứng dụng — Góc nhìn nhà sản xuất CaCO3 Filler</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Ứng dụng</th>
+          <th>Tỷ trọng</th>
+          <th>CAGR</th>
+          <th>Dùng CaCO3</th>
+          <th>Ưu tiên</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hygiene</strong> (tã, băng vệ sinh, khăn ướt)</td>
+          <td>~38%</td>
+          <td>~5.5%</td>
+          <td>✅ Nhiều (PP spunbond)</td>
+          <td><span class="tag-pill tag-green">⭐⭐⭐ Cao nhất</span></td>
+        </tr>
+        <tr>
+          <td><strong>Durables / Geotextile</strong> (xây dựng, hạ tầng)</td>
+          <td>~18%</td>
+          <td>~8.5%</td>
+          <td>✅ Khá (needle punch)</td>
+          <td><span class="tag-pill tag-green">⭐⭐⭐ Cao</span></td>
+        </tr>
+        <tr>
+          <td><strong>Medical</strong> (PPE, gown, mask)</td>
+          <td>~14%</td>
+          <td>~6.5%</td>
+          <td>✅ Có (SMS/SMMS)</td>
+          <td><span class="tag-pill tag-amber">⭐⭐ Cân nhắc</span></td>
+        </tr>
+        <tr>
+          <td><strong>Filtration</strong> (không khí, nước, HVAC)</td>
+          <td>~9%</td>
+          <td>~7.5%</td>
+          <td>⚠️ Nano grade đặc biệt</td>
+          <td><span class="tag-pill tag-amber">⭐⭐ Tiềm năng</span></td>
+        </tr>
+        <tr>
+          <td><strong>Automotive</strong> (cách âm, nội thất)</td>
+          <td>~12%</td>
+          <td>~6%</td>
+          <td>⚠️ Hạn chế (EV xu hướng mới)</td>
+          <td><span class="tag-pill tag-coral">⭐ Ít ưu tiên</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Focus recommendation -->
+  <div class="section card">
+    <p class="section-title">Khuyến nghị chiến lược — Nhóm sản phẩm nên tập trung</p>
+    <ul class="focus-list">
+      <li>
+        <div class="focus-icon" style="background:#EAF3DE; color:#3B6D11;">①</div>
+        <div>
+          <div class="bold">Hygiene / PP Spunbond <span class="tag-pill tag-green">Ưu tiên hàng đầu</span></div>
+          <div class="desc">Chiếm ~38% thị trường — khối lượng lớn nhất. Nhà máy tã, băng vệ sinh tại Việt Nam, Thái Lan, Indonesia đang tăng công suất mạnh. CaCO3 thay thế 20–40% PP giúp giảm cost 12–22%. Đây là thị trường chủ lực, ổn định và dễ tiếp cận nhất.</div>
+        </div>
+      </li>
+      <li>
+        <div class="focus-icon" style="background:#EAF3DE; color:#3B6D11;">②</div>
+        <div>
+          <div class="bold">Geotextile / Construction <span class="tag-pill tag-green">CAGR cao nhất (~8.5%)</span></div>
+          <div class="desc">Đầu tư hạ tầng bùng nổ tại Đông Nam Á, Ấn Độ, Trung Đông. CaCO3 trong needle-punch geotextile tăng độ cứng, giảm lượng PP. Nhu cầu từ đường bộ, đê điều, nền móng xây dựng rất lớn và tăng liên tục theo GDP các nước đang phát triển.</div>
+        </div>
+      </li>
+      <li>
+        <div class="focus-icon" style="background:#FAEEDA; color:#854F0B;">③</div>
+        <div>
+          <div class="bold">Medical / SMS Nonwoven <span class="tag-pill tag-amber">Biên lợi nhuận cao</span></div>
+          <div class="desc">CaCO3 dùng trong cấu trúc SMS/SMMS cho gown và PPE. Biên lợi nhuận cao hơn hygiene nhưng đòi hỏi kiểm định chất lượng nghiêm ngặt (FDA, CE). Phù hợp nếu có năng lực R&D và chứng nhận chất lượng.</div>
+        </div>
+      </li>
+      <li>
+        <div class="focus-icon" style="background:#FAEEDA; color:#854F0B;">④</div>
+        <div>
+          <div class="bold">Filtration / Nano CaCO3 <span class="tag-pill tag-amber">Dài hạn</span></div>
+          <div class="desc">Xu hướng bền vững và quy định môi trường thúc đẩy CaCO3 nano grade thâm nhập meltblown. Đây là phân khúc tương lai, cần đầu tư R&D cho hạt siêu mịn và coated surface treatment. Không phù hợp ngay lập tức nếu chưa có năng lực này.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Trend section -->
+  <div class="section card">
+    <p class="section-title">Xu hướng thị trường quan trọng cần theo dõi</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;">
+      <div style="background:#f0faf6;border-radius:8px;padding:14px;">
+        <div style="font-weight:600;font-size:13px;color:#0f6e56;margin-bottom:6px;">💰 PP giá cao = CaCO3 hưởng lợi</div>
+        <div style="font-size:12px;color:#444;">PP resin tăng 45–80% từ đầu 2026 (xung đột Hormuz). Nhà sản xuất non-woven đang tăng tỷ lệ CaCO3 từ 10% lên 25–30% để bù cost. Đây là cơ hội vàng để đẩy mạnh doanh số.</div>
+      </div>
+      <div style="background:#f0faf6;border-radius:8px;padding:14px;">
+        <div style="font-weight:600;font-size:13px;color:#0f6e56;margin-bottom:6px;">🌿 Sustainability = Lợi thế marketing</div>
+        <div style="font-size:12px;color:#444;">EU Extended Producer Responsibility có hiệu lực 2025. CaCO3 là khoáng tự nhiên, giảm lượng plastic → lợi thế "xanh". Cần truyền thông mạnh về giảm carbon footprint khi dùng CaCO3.</div>
+      </div>
+      <div style="background:#f0faf6;border-radius:8px;padding:14px;">
+        <div style="font-weight:600;font-size:13px;color:#0f6e56;margin-bottom:6px;">🇻🇳 Việt Nam nổi lên mạnh</div>
+        <div style="font-size:12px;color:#444;">Việt Nam (US Masterbatch, EuroPlas) xuất CaCO3 masterbatch đến 80+ quốc gia. Ngành non-woven nội địa tăng nhanh do FDI hygiene (Unicharm, Kimberly-Clark). Cơ hội nội địa lẫn xuất khẩu đều lớn.</div>
+      </div>
+      <div style="background:#f0faf6;border-radius:8px;padding:14px;">
+        <div style="font-weight:600;font-size:13px;color:#0f6e56;margin-bottom:6px;">⚡ EV & Automotive thay đổi</div>
+        <div style="font-size:12px;color:#444;">Xe điện thúc đẩy non-woven cho pin separator và cách nhiệt. Tuy nhiên yêu cầu kỹ thuật cao, khó tiếp cận. Không phải ưu tiên cho CaCO3 filler thông thường trong ngắn hạn.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Báo cáo tổng hợp từ Mordor Intelligence, Precedence Research, Allied Market Research, Technavio · Tháng 5/2026<br>
+    Dành cho mục đích nội bộ — Internal Use Only
+  </div>
+
+</div>
+
+<script>
+const gridColor = 'rgba(0,0,0,0.07)';
+const textColor = '#666';
+
+new Chart(document.getElementById('regionChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Châu Á–TBD (45%)', 'Bắc Mỹ (24%)', 'Châu Âu (20%)', 'Còn lại (11%)'],
+    datasets: [{
+      data: [45, 24, 20, 11],
+      backgroundColor: ['#1D9E75', '#378ADD', '#7F77DD', '#EF9F27'],
+      borderWidth: 3,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { font: { size: 12 }, padding: 14, color: textColor } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}%` } }
+    },
+    cutout: '55%'
+  }
+});
+
+new Chart(document.getElementById('appChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Hygiene', 'Durables/\nConstruction', 'Medical', 'Automotive', 'Filtration', 'Khác'],
+    datasets: [{
+      label: 'Tỷ trọng (%)',
+      data: [38, 18, 14, 12, 9, 9],
+      backgroundColor: ['#D85A30', '#1D9E75', '#378ADD', '#7F77DD', '#EF9F27', '#888780'],
+      borderWidth: 0,
+      borderRadius: 5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}%` } }
+    },
+    scales: {
+      x: { ticks: { color: textColor, autoSkip: false }, grid: { display: false } },
+      y: { ticks: { color: textColor, callback: v => v + '%' }, grid: { color: gridColor }, max: 50 }
+    }
+  }
+});
+
+new Chart(document.getElementById('cagrChart'), {
+  type: 'bar',
+  indexAxis: 'y',
+  data: {
+    labels: ['ASEAN', 'Châu Á–TBD', 'Bắc Mỹ', 'Latin Mỹ', 'Châu Âu'],
+    datasets: [{
+      data: [8.0, 7.5, 5.5, 5.0, 4.5],
+      backgroundColor: ['#1D9E75','#1D9E75','#378ADD','#EF9F27','#7F77DD'],
+      borderWidth: 0, borderRadius: 3
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: textColor, callback: v => v + '%' }, grid: { color: gridColor } },
+      y: { ticks: { color: textColor, font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+
+new Chart(document.getElementById('appCagrChart'), {
+  type: 'bar',
+  indexAxis: 'y',
+  data: {
+    labels: ['Geotextile', 'Filtration', 'Medical', 'Automotive', 'Hygiene'],
+    datasets: [{
+      data: [8.5, 7.5, 6.5, 6.0, 5.5],
+      backgroundColor: ['#1D9E75','#7F77DD','#378ADD','#888780','#D85A30'],
+      borderWidth: 0, borderRadius: 3
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: textColor, callback: v => v + '%' }, grid: { color: gridColor } },
+      y: { ticks: { color: textColor, font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
